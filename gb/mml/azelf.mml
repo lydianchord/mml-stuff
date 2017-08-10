@@ -1,0 +1,87 @@
+#TITLE Battle! (Azelf/Mesprit/Uxie)
+#COMPOSER Junichi Masuda
+#PROGRAMER Alex Huang (LydianChord)
+
+
+@WT0 = { 0 1 1 2 2 3 3 4 4 6 8 10 12 13 14 15 13 11 10 9 8 7 6 5 15 14 13 12 11 10 9 8 }
+@MP0 = { 24 6 1 }
+
+; wave channel patterns
+$0 { l8 o2 c g e- a- d a d- e }  ; bass intro
+$1 { l8 o2 c g c d- a- < b- > f < a- }  ; bass main 1
+$2 { l8 o2 c g > c < d- a- < b- f > d- }  ; bass main 2
+$7 { l8 o2 c g c d- a- < b- l16 > d- e- f f+ }  ; bass fill
+$14(a-) { l8 o2 c4. d- r < b-4 %1% }  ; original bassline
+$15(1) { $1() $2() $1() $%1%() }  ; bass loop
+
+; pulse instruments
+$4 { @ve-5 v7 q8 }  ; pluck
+$5 { @ve-6 v6 }  ; secondary pluck
+$6 { @ve0 v5 q6 }  ; short sustain
+$10 { @ve-5 v8 }  ; hit
+
+; pulse patterns
+$3 { l4 o6 @ve-1 v1 c c @ve-2 v2 c c @ve-3 v3 c c @ve-4 v4 c c @ve-5 v5 c c v6 c c v7 [ c ]4 }  ; pulse intro
+$8(-1, 7) { l4 @ve%1% v%2% c e f b-8 a-8 g2 f d- c e8 f8 }  ; melody stem
+$9(-1, 7) { K-5 $8(%1%, %2%) K0 }  ; harmony stem
+$11 { l8 @ve-1 [ g4. d r g d4 v- @ve0 e4 @ve-1 e2. v+ K1 ]2 K0 }  ; verse 1
+$12() { l16 [ r8 [ e f ]3 g- f [ e f ]3 %1% < r8 [ c d- ]3 d d- [ c d- ]3 > ]2 }  ; verse 2
+$13 { l1 [ c2.&c8 r8 c8 r8 r2. ]2 c2 < b- > c2 < g b-4 r2. }  ; lake motif
+$16 { l1 c2 < b- f2 g > c4 r2. }  ; lake motif resolution
+$17() { MP0 v6 @ve0 %1%2 @ve-1 %1%2 MPOF }  ; whole note with vibrato
+
+
+ABC t180 r4
+AB v7 @1
+C v3 WT0
+
+A $3()
+B K-5 $3() K0 <
+C [ r1 ]4
+
+A [ c ]16 l8 c4 c4 c $6() g $4() c $6() g+ $4() [ c $6() a $4() c4 c $6() g $4() c $6() g+ $4() ]3
+B [ g ]8 l8 [ g $5() c $4() g16 $5() f16 g $4() g $5() > c16 < b-16 $4() g4 ]6
+C [ $0() ]8
+
+A e-4 r2. [ r1 ]4
+B g4 r2. [ r1 ]4
+C c4 r2 l16 c d- < b- > d- $14() $14(>d-) [ $14() ]2
+
+
+ABC L
+
+A @0 l8 o3 @ve-7 v8 [ c g g ]3 c c g g c c16 c16 g [ g g c g c ]2 [ g g c ]2
+B [ r1 ]4
+C $14() $14(>d-) $14() > c4. d- r < l16 b- > c d- < b- a- > d-
+
+AB @1 o5
+A $8() b- a- MP0 g2 MPOF > $10() c2 < $8() d- < b- > MP0 c2 MPOF $10() f+8 g4.
+B $9() f e- MP0 d2 MPOF $10() g2 $9() < b- f > $10() g2 < b8 > c4.
+C $15() $15(7)
+
+A @2 v7 o4 [ $11() @1 > ]2
+B v5 o3 [ $11() > ]2
+C $15() $15(7)
+
+A @0 o3 $8(0, 9) b- a- MP0 g2. MPOF @1 > $10() d4 > $8() d- < b- > $17(c)
+B o5 $9(-1, 6) f e- $10() c2. < g4 > $9() < b- f $17(g)
+C [ $15() ] 2
+
+A $6() o6 $12() K1 $12(v-) K0 q8
+B @0 l4 q-4 v1 o4 [ c c v+ ]8 [ d- ]8 [ v- d- ]8 q8
+C [ $15() ] 2
+
+AB o5
+A @2 $8() b- a- $17(g) $8() d- < b- > $17(c)
+B @1 $9() f e- $17(d) $9() < b- f $17(g)
+C [ $15() ] 2
+
+AB @0 @ve0
+A v9 o3 $13() @3 v5 o4 $16()
+B v6 o5 K3 $13() v5 o4 K-5 $16() K0
+C [ $15() ] 3
+
+AB @1 @ve-1 v6 o4
+A MP0 $13() v7 > $16() MPOF
+B MP0 K7 $13() v7 > $16() K0 MPOF
+C [ $0() ]12
