@@ -1,0 +1,122 @@
+#TITLE SERPENT GENESIS
+#COMPOSER James Roach, Toby Fox
+#PROGRAMER Alex Huang (LydianChord)
+
+#GB-NOISE 1
+
+
+@WT0 = { 0:15 15:8 15:8 }
+@MP0 = { 0 3 1 }
+@MP1 = { 0 3 2 }
+@EN0 = { -1 } (EVERY-NOTE)
+
+@v0 = { 9 4 }  ; percussion attack
+@v1 = { 5'3 0'2 2'3 0'2 }  ; echo
+
+; noise patterns
+$0() { @0 o5 b-%1% }  ; hi-hat
+$1(, 0) { @%2% o3 b%1% }  ; snare
+$2 { $0(8) $0() $0() $1(8) $0() $0() }  ; A section beat
+; A section drums
+$5 {
+    l16
+    [ $2() ]15  $0(8) $0() $0() v7 EN0 K-1 [ $1(32, 1) r32 ]4 K0 ENOF @v0
+    [ $2() ]16
+}
+; B section drums
+$8 {
+    l4
+    [
+        $0() $0() v7 EN0 K-1 [ $1(32, 1) r32 ]8 K0 ENOF @v0
+        $0() $0() $1() $0()
+        $0() $0(8) $1(8) $0() $1() |
+        $0() $0() $1() $0()
+    ]2
+    $0(8) $1(8) $0() $1() [ $0(16) ]4
+}
+
+; wave channel patterns
+; A section bass
+$3(c+) {
+    [
+        [
+            o2
+            d > d < f d a r e d    c+ > c+ < f c+ a r e d
+            e > e < g e b- r c+ d  f > f < f | c+ a r d c+
+        ]2
+        | c+ a r r4
+    ]2
+    %1% a r 
+}
+; B section bass
+$6 {
+    [
+        o2
+        g b- g < g r2   > f a f < f r2 |
+        > e g e < e r2  > d r e f r < f+ r4
+    ]2
+    o2 b > d < b < b r2
+    [ o3 c+ < c+16 r16 | c+ ]2 o2 [ c+16 r16 ]2 c+
+}
+
+; pulse patterns
+; A section melody
+$4 {
+    @1
+    [
+        [ o6 r d4 e d c+4 < b-  a b- a g4 c+ d e  f4 e4 d4 | g+ a&a1 ]2
+        c+ | d&d1
+    ]2
+    o5 d&d2
+}
+; B section melody
+$7(1) {
+    @2
+    [ o5 g4 f+ g4. g+4  a2 r | e f f+  g4 g+4 a4 g g-  f2 r e f f+ ]2
+    o5 f f+ g  f+4 g+4 > d c+ < b > c  c+%1%
+}
+
+
+ABCD t180 r4
+AB MP0 @ve-5 l8
+A v7
+B v3
+C WT0 v3 l8
+D @v0 @ve-7
+
+A $4() r @2 o5 e f f+
+B r $4() r @2 o5 e f
+C $3() o2 d c+
+D $5()
+
+A $7()
+B f+ $7(2..)
+C $6()
+D $8()
+
+A $4() r2
+B r $4() r4.
+C $3(e) r4
+D $5()
+
+A (
+    MP1 @2 @ve-1 v5 [ o5 r4 a g+ a r g f  g r f e f r c+4  d r r2. | r1 ]2 MP0
+    r2 r @ve-5 v7 o5 e f f+
+)
+B (
+    @0 @v1 @ve0 [ o4 d f a > c+ d c+ < a f ]7
+    o4 d2. @2 @ve-5 v3 > e f
+)
+C (
+    [
+        [ o2 d r f e r d r < a  > d r | f e r c+4. ]2
+        | o1 b > c r c+4.
+    ]2
+    r2 o2 d c+
+)
+D l16 [ $2() ]14  $0(1)
+
+A $7()
+B f+ $7(2..)
+C $6()
+D $8()
