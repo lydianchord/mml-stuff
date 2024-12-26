@@ -25,5 +25,5 @@ metronome:
 	
 .include "cgb_hardware.i"
 .include "gbmusic.asm"
-.include "C:\xpmck-32\lib\gbc\xpmp_gbc.asm"
+.include "xpmp_gbc.asm"
 
