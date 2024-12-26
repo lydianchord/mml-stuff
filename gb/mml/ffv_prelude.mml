@@ -1,0 +1,64 @@
+#TITLE Final Fantasy V - Prelude
+#COMPOSER Nobuo Uematsu
+#PROGRAMER Alex Huang (LydianChord)
+
+
+@WT0 = { 0:15:0.5 3 }
+@MP0 = { 18 6 1 }
+@v0 = { | 3 1 } (EVERY-NOTE)
+
+
+; wave channel patterns
+; C major - (first echo note)
+$0(c) {
+    o3
+    c%1% dc ed ge     > c<g> dc ed ge  > c<g> dc ed ge  > c<g> dc ed ge
+    > c<g g>c< eg de  cd < g>c< eg de  cd < g>c< eg de  cd < g>c< eg de
+}
+; A minor
+$1 {
+    o2
+    a>d< ba > c<b> ec  ae ba > c<b> ec  ae ba > c<b> ec  ae ba > c<b> ec
+    ae ea ce < b>c<    ab ea ce < b>c<  ab ea ce < b>c<  ab ea ce < b>c<
+}
+; F major, 1st inversion - (first note, first echo note, transpose command)
+$2(a, b, ) {
+    o2
+    %1%%2% %3% > c<a> fc gf  ag > c<a> fc gf  ag > c<a> fc gf  ag > c<a> fc gf
+    ag ga fg cf              < a>c< ga fg cf  < a>c< ga fg cf  < a>c< ga fg cf
+    K0
+}
+; A flat major 7th - (first note, first echo note, transpose command)
+$3(a-, >d<, ) {
+    o2
+    %1%%2% %3% > c<a-> e-c ge-  a-g > c<a-> e-c ge-  a-g > c<a-> e-c ge-  a-g > c<a-> e-c ge-
+    a-g ga- e-g ce-             < a->c< ga- e-g ce-  < a->c< ga- e-g ce-  < a->c< ga- e-g ce-
+    K0
+}
+; wave channel loop - (first echo note)
+$4(c) {
+    $0(%1%) $1() $0(<b>) $1()
+    $2() $2(b, >c<, K2) $3() $3(b-, >c<, K2)
+}
+
+
+ABC t90 r4
+AB MP0 l4
+B @1
+C WT0 @v0 l32
+
+AB [ r1 ]16
+C $4()
+
+
+ABC L
+
+A (
+    [ o5 @2 v8 c1 < b2 > d2 | c1^2 @1 v6 < g f ]2 o5 c1 @1 v6 c < b a g
+    @2 v8 a1 g2 a2 b2. > c d2 < b2 > c1 e- d c e- d2. e- f2 d4.. v3 d16
+)
+B (
+    [ o4 v6 e1 f2 e4.. v2 e16 v6 e2 a2 | > d c < b > d ]2 o5 e d c < b
+    v6 e1 d2 c2 g1&g2... v2 g16 v6 g1 > g f e- g f1 < a2... v2 a16
+)
+C $4(d)
